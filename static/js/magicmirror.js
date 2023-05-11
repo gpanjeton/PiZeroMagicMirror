@@ -142,7 +142,6 @@
 	  getTemperature();
 	  getWeatherDescription();	 
 	  getForecast();
-	  getNewsRSS();
 	  
   }
   
@@ -255,45 +254,7 @@
 		return imageName;
   }
   
- /* function getNewsRSS()
-  {
-	 $.ajax({url: "/news", success: function(result){
-       
-	   xmlDoc = $.parseXML( result );
-	   $xml = $( xmlDoc )
-	   $titles = $xml.find( "entry" )
-	   
-	   htmlString="<b>Phrases Of the Week</b><br>";
-	   htmlString=htmlString+"<ul>";
-	   $titles.slice(0, 4).each(function( index ) {
-			htmlString=htmlString+"<li><b>"+ $( this ).find("title").text() + "</b>: " + $( this ).find("summary").text() + "</li>";
-		});
-		htmlString=htmlString+"</ul>";
-		$("#newsDiv").html(htmlString);
-	   
-    }});
-  }*/
 
-  function getNewsRSS()
-  {
-	 $.ajax({url: "/news", success: function(result){
-       
-	   xmlDoc = $.parseXML( result );
-	   $xml = $( xmlDoc )
-	   $titles = $xml.find( "entry" )
-	   
-	   htmlString=""
-	   //htmlString="<b>Phrases Of the Week</b><br>";
-	   //htmlString=htmlString+"<h4>";
-	   $titles.each(function( index ) {
-			htmlString=htmlString+"<div class='slides'><p><h4><i>"+ $( this ).find("title").text() + "</i></h4></p><p> " + $( this ).find("summary").text() + "</p></div>";
-		});
-		//htmlString=htmlString+"</h4>";
-		$("#newsDiv").html(htmlString);
-		playSlides();
-	   
-    }});
-  }
 
   function playSlides()
   {
